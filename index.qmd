@@ -5,7 +5,7 @@ format:
   html: default
   pdf: default
 execute:
-  echo: true
+  echo: false
   eval: false
 ---
 
@@ -284,7 +284,8 @@ simpleCoinDAG.show()
 ```{r}
 #| label: simple-sim-r
 #| fig-cap: R simulation of coin flip game
-#| echo: true
+#| echo: false
+#| include: false
 
 suppressPackageStartupMessages(library(tidyverse))
 
@@ -312,7 +313,8 @@ sim_data
 ```{python}
 #| label: simple-sim-python
 #| fig-cap: Python simulation of coin flip game
-#| echo: true
+#| echo: false
+#| include: false
 #| python.reticulate: false
 
 import numpy as np
@@ -393,7 +395,8 @@ timeSeriesDAG.show()
 ```{r}
 #| label: timeseries-sim-r
 #| fig-cap: R time-series simulation of account balance
-#| echo: true
+#| echo: false
+#| include: false
 
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(ggplot2))
@@ -458,7 +461,8 @@ time_series_data
 ```{python}
 #| label: timeseries-sim-python
 #| fig-cap: Python time-series simulation of account balance
-#| echo: true
+#| echo: false
+#| include: false
 #| python.reticulate: false
 
 import numpy as np
@@ -529,7 +533,8 @@ Let's see what the distribution of final balances looks like across many simulat
 ```{r}
 #| label: distribution-sim-r
 #| fig-cap: R probability distribution of final balances
-#| echo: true
+#| echo: false
+#| include: false
 
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(ggplot2))
@@ -600,7 +605,8 @@ summary_stats
 ```{python}
 #| label: distribution-sim-python
 #| fig-cap: Python probability distribution of final balances
-#| echo: true
+#| echo: false
+#| include: false
 #| python.reticulate: false
 
 import numpy as np
