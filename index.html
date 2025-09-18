@@ -266,6 +266,46 @@ window.Quarto = {
 <li><label><input type="checkbox">Appropriate use of functions and loops</label></li>
 <li><label><input type="checkbox">Professional visualization styling</label></li>
 </ul>
+</section>
+<section id="expected-value-analysis-answers" class="level2">
+<h2 class="anchored" data-anchor-id="expected-value-analysis-answers">Expected Value Analysis Answers 📊</h2>
+<p>Let’s work through the expected value analysis questions step by step:</p>
+<section id="question-1-expected-value-after-one-coin-flip" class="level3">
+<h3 class="anchored" data-anchor-id="question-1-expected-value-after-one-coin-flip">Question 1: Expected Value After One Coin Flip</h3>
+<p>For the original game, after one coin flip: - <strong>Heads (50% probability):</strong> Account becomes $1,000 × 1.5 = $1,500 - <strong>Tails (50% probability):</strong> Account becomes $1,000 × 0.6 = $600</p>
+<p><strong>Expected Value = 0.5 × $1,500 + 0.5 × $600 = $750 + $300 = $1,050</strong></p>
+</section>
+<section id="question-2-expectation-vs.-reality" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-expectation-vs.-reality">Question 2: Expectation vs.&nbsp;Reality</h3>
+<p>The expected value is <strong>positive</strong> ($1,050 &gt; $1,000), which suggests the game should be profitable on average. However, this is misleading because:</p>
+<ul>
+<li>The expected value calculation assumes you can play the game many times</li>
+<li>In reality, you only get to play once (until age 55)</li>
+<li>The multiplicative nature of the game creates extreme outcomes over time</li>
+</ul>
+</section>
+<section id="question-3-single-simulation-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="question-3-single-simulation-analysis">Question 3: Single Simulation Analysis</h3>
+<p>A single simulation would show one possible path of your account balance over time. You might see: - <strong>Lucky path:</strong> Consistent heads leading to exponential growth - <strong>Unlucky path:</strong> Consistent tails leading to rapid decline - <strong>Mixed path:</strong> Alternating results with volatile swings</p>
+<p><strong>Are you happy?</strong> Probably not, because the single path is highly unpredictable and could end up much lower than $1,000.</p>
+</section>
+<section id="question-4-multiple-simulations-100-runs" class="level3">
+<h3 class="anchored" data-anchor-id="question-4-multiple-simulations-100-runs">Question 4: Multiple Simulations (100 runs)</h3>
+<p>With 100 simulations, you’d see a distribution of final account balances at age 55. The results would likely show: - <strong>Most outcomes:</strong> Very low balances (close to $0) - <strong>Few outcomes:</strong> Extremely high balances (millions) - <strong>Average:</strong> Still around $1,050, but this is misleading</p>
+<p><strong>Are you happy?</strong> Probably not, because most people would end up with very little money.</p>
+</section>
+<section id="question-5-probability-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="question-5-probability-analysis">Question 5: Probability Analysis</h3>
+<p>Based on 100 simulations, the probability that your account balance will be greater than $1,000 at age 55 is likely around <strong>20-30%</strong>. This means you have a 70-80% chance of ending up with less than your initial $1,000.</p>
+</section>
+<section id="question-6-strategy-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="question-6-strategy-comparison">Question 6: Strategy Comparison</h3>
+<p>For the modified strategy (betting 50% of account each time): - The probability of ending up with more than $10,000 at age 55 would be even <strong>lower</strong> than the original game - This is because the modified strategy is more conservative (smaller bets) but still has the same unfavorable expected value per bet - The original game’s higher volatility actually gives you a better chance of extreme outcomes (both positive and negative)</p>
+</section>
+</section>
+<section id="key-insight-the-ergodicity-problem" class="level2">
+<h2 class="anchored" data-anchor-id="key-insight-the-ergodicity-problem">Key Insight: The Ergodicity Problem</h2>
+<p>This demonstrates the <strong>ergodicity problem</strong> in economics: - <strong>Expected value</strong> suggests the game is profitable - <strong>Reality</strong> shows most people lose money - The difference comes from the multiplicative (not additive) nature of the game over time</p>
 <section id="resources" class="level3">
 <h3 class="anchored" data-anchor-id="resources">Resources</h3>
 <ul>
@@ -329,47 +369,6 @@ window.Quarto = {
 </div>
 </div>
 </section>
-</section>
-<section id="expected-value-analysis-answers" class="level2">
-<h2 class="anchored" data-anchor-id="expected-value-analysis-answers">Expected Value Analysis Answers 📊</h2>
-<p>Let’s work through the expected value analysis questions step by step:</p>
-<section id="question-1-expected-value-after-one-coin-flip" class="level3">
-<h3 class="anchored" data-anchor-id="question-1-expected-value-after-one-coin-flip">Question 1: Expected Value After One Coin Flip</h3>
-<p>For the original game, after one coin flip: - <strong>Heads (50% probability):</strong> Account becomes $1,000 × 1.5 = $1,500 - <strong>Tails (50% probability):</strong> Account becomes $1,000 × 0.6 = $600</p>
-<p><strong>Expected Value = 0.5 × $1,500 + 0.5 × $600 = $750 + $300 = $1,050</strong></p>
-</section>
-<section id="question-2-expectation-vs.-reality" class="level3">
-<h3 class="anchored" data-anchor-id="question-2-expectation-vs.-reality">Question 2: Expectation vs.&nbsp;Reality</h3>
-<p>The expected value is <strong>positive</strong> ($1,050 &gt; $1,000), which suggests the game should be profitable on average. However, this is misleading because:</p>
-<ul>
-<li>The expected value calculation assumes you can play the game many times</li>
-<li>In reality, you only get to play once (until age 55)</li>
-<li>The multiplicative nature of the game creates extreme outcomes over time</li>
-</ul>
-</section>
-<section id="question-3-single-simulation-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="question-3-single-simulation-analysis">Question 3: Single Simulation Analysis</h3>
-<p>A single simulation would show one possible path of your account balance over time. You might see: - <strong>Lucky path:</strong> Consistent heads leading to exponential growth - <strong>Unlucky path:</strong> Consistent tails leading to rapid decline - <strong>Mixed path:</strong> Alternating results with volatile swings</p>
-<p><strong>Are you happy?</strong> Probably not, because the single path is highly unpredictable and could end up much lower than $1,000.</p>
-</section>
-<section id="question-4-multiple-simulations-100-runs" class="level3">
-<h3 class="anchored" data-anchor-id="question-4-multiple-simulations-100-runs">Question 4: Multiple Simulations (100 runs)</h3>
-<p>With 100 simulations, you’d see a distribution of final account balances at age 55. The results would likely show: - <strong>Most outcomes:</strong> Very low balances (close to $0) - <strong>Few outcomes:</strong> Extremely high balances (millions) - <strong>Average:</strong> Still around $1,050, but this is misleading</p>
-<p><strong>Are you happy?</strong> Probably not, because most people would end up with very little money.</p>
-</section>
-<section id="question-5-probability-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="question-5-probability-analysis">Question 5: Probability Analysis</h3>
-<p>Based on 100 simulations, the probability that your account balance will be greater than $1,000 at age 55 is likely around <strong>20-30%</strong>. This means you have a 70-80% chance of ending up with less than your initial $1,000.</p>
-</section>
-<section id="question-6-strategy-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="question-6-strategy-comparison">Question 6: Strategy Comparison</h3>
-<p>For the modified strategy (betting 50% of account each time): - The probability of ending up with more than $10,000 at age 55 would be even <strong>lower</strong> than the original game - This is because the modified strategy is more conservative (smaller bets) but still has the same unfavorable expected value per bet - The original game’s higher volatility actually gives you a better chance of extreme outcomes (both positive and negative)</p>
-</section>
-</section>
-<section id="key-insight-the-ergodicity-problem" class="level2">
-<h2 class="anchored" data-anchor-id="key-insight-the-ergodicity-problem">Key Insight: The Ergodicity Problem</h2>
-<p>This demonstrates the <strong>ergodicity problem</strong> in economics: - <strong>Expected value</strong> suggests the game is profitable - <strong>Reality</strong> shows most people lose money - The difference comes from the multiplicative (not additive) nature of the game over time</p>
-<hr>
 </section>
 <section id="sec-simulation-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="sec-simulation-concepts">Essential Simulation Concepts 🎯</h2>
