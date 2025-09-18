@@ -221,6 +221,66 @@ A single simulation would show one possible path of your account balance over ti
 
 **Are you happy?** Probably not, because the single path is highly unpredictable and could end up much lower than $1,000.
 
+```{python}
+#| label: single-simulation-plot
+#| fig-cap: Single simulation showing account balance over time
+#| echo: false
+#| include: true
+#| python.reticulate: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Set seed for reproducibility
+np.random.seed(42)
+
+# Parameters
+initial_balance = 1000
+n_periods = 35  # From age 20 to 55
+n_sims = 1
+
+# Simulate one path
+def simulate_investment_path(initial, periods):
+    balance = initial
+    path = [initial]
+    
+    for i in range(periods):
+        coin_flip = np.random.binomial(1, 0.5)
+        if coin_flip == 1:
+            balance = balance * 1.5  # 50% gain
+        else:
+            balance = balance * 0.6  # 40% loss
+        path.append(balance)
+    
+    return path
+
+# Run simulation
+time_series_data = simulate_investment_path(initial_balance, n_periods)
+
+# Create plot
+fig, ax = plt.subplots(figsize=(12, 6))
+ax.plot(range(n_periods + 1), time_series_data, 
+        color='darkblue', linewidth=2, marker='o', markersize=4)
+ax.axhline(y=initial_balance, color='red', linestyle='--', linewidth=2, 
+           label='Initial Balance ($1,000)')
+ax.set_title('Single Investment Simulation Path\nAccount Balance Over Time', 
+             fontsize=14, fontweight='bold')
+ax.set_xlabel('Years (Age 20 to 55)', fontsize=12)
+ax.set_ylabel('Account Balance ($)', fontsize=12)
+ax.grid(True, alpha=0.3)
+ax.legend()
+ax.set_yscale('log')  # Log scale to better show the extreme values
+
+# Format y-axis as currency
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+
+plt.tight_layout()
+plt.show()
+
+print(f"Final balance: ${time_series_data[-1]:,.2f}")
+print(f"Return: {((time_series_data[-1] / initial_balance) - 1) * 100:.1f}%")
+```
+
 ### Question 4: Multiple Simulations (100 runs)
 
 With 100 simulations, you'd see a distribution of final account balances at age 55. The results would likely show:
@@ -229,6 +289,72 @@ With 100 simulations, you'd see a distribution of final account balances at age 
 - **Average:** Still around $1,050, but this is misleading
 
 **Are you happy?** Probably not, because most people would end up with very little money.
+
+```{python}
+#| label: multiple-simulations-plot
+#| fig-cap: Distribution of final account balances from 100 simulations
+#| echo: false
+#| include: true
+#| python.reticulate: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Set seed for reproducibility
+np.random.seed(123)
+
+# Parameters
+initial_balance = 1000
+n_periods = 35  # From age 20 to 55
+n_sims = 100
+
+# Simulate multiple paths
+def simulate_final_balance(initial, periods):
+    balance = initial
+    for i in range(periods):
+        coin_flip = np.random.binomial(1, 0.5)
+        if coin_flip == 1:
+            balance = balance * 1.5  # 50% gain
+        else:
+            balance = balance * 0.6  # 40% loss
+    return balance
+
+# Run multiple simulations
+final_balances = [simulate_final_balance(initial_balance, n_periods) for _ in range(n_sims)]
+
+# Create histogram
+fig, ax = plt.subplots(figsize=(12, 6))
+ax.hist(final_balances, bins=30, color='steelblue', alpha=0.7, edgecolor='black')
+ax.axvline(initial_balance, color='red', linestyle='--', linewidth=2, 
+           label='Initial Balance ($1,000)')
+ax.axvline(np.mean(final_balances), color='orange', linestyle='-', linewidth=2, 
+           label=f'Mean Balance (${np.mean(final_balances):,.0f})')
+
+ax.set_title('Distribution of Final Account Balances\n100 Simulations, 35 Years Each', 
+             fontsize=14, fontweight='bold')
+ax.set_xlabel('Final Balance ($)', fontsize=12)
+ax.set_ylabel('Frequency', fontsize=12)
+ax.legend()
+ax.grid(True, alpha=0.3)
+ax.set_xscale('log')  # Log scale to better show the distribution
+
+# Format x-axis as currency
+ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+
+plt.tight_layout()
+plt.show()
+
+# Calculate statistics
+mean_balance = np.mean(final_balances)
+median_balance = np.median(final_balances)
+prob_above_initial = np.mean(np.array(final_balances) > initial_balance)
+prob_above_10000 = np.mean(np.array(final_balances) > 10000)
+
+print(f"Mean final balance: ${mean_balance:,.2f}")
+print(f"Median final balance: ${median_balance:,.2f}")
+print(f"Probability above $1,000: {prob_above_initial:.1%}")
+print(f"Probability above $10,000: {prob_above_10000:.1%}")
+```
 
 ### Question 5: Probability Analysis
 
@@ -240,6 +366,105 @@ For the modified strategy (betting 50% of account each time):
 - The probability of ending up with more than $10,000 at age 55 would be even **lower** than the original game
 - This is because the modified strategy is more conservative (smaller bets) but still has the same unfavorable expected value per bet
 - The original game's higher volatility actually gives you a better chance of extreme outcomes (both positive and negative)
+
+```{python}
+#| label: strategy-comparison-plot
+#| fig-cap: Comparison of original vs modified investment strategies
+#| echo: false
+#| include: true
+#| python.reticulate: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Set seed for reproducibility
+np.random.seed(456)
+
+# Parameters
+initial_balance = 1000
+n_periods = 35  # From age 20 to 55
+n_sims = 100
+
+# Original strategy: bet entire account
+def simulate_original_strategy(initial, periods):
+    balance = initial
+    for i in range(periods):
+        coin_flip = np.random.binomial(1, 0.5)
+        if coin_flip == 1:
+            balance = balance * 1.5  # 50% gain
+        else:
+            balance = balance * 0.6  # 40% loss
+    return balance
+
+# Modified strategy: bet 50% of account each time
+def simulate_modified_strategy(initial, periods):
+    balance = initial
+    for i in range(periods):
+        coin_flip = np.random.binomial(1, 0.5)
+        bet_amount = balance * 0.5  # Bet 50% of current balance
+        if coin_flip == 1:
+            balance = balance - bet_amount + (bet_amount * 1.5)  # 50% gain on bet
+        else:
+            balance = balance - bet_amount + (bet_amount * 0.6)  # 40% loss on bet
+    return balance
+
+# Run simulations for both strategies
+original_balances = [simulate_original_strategy(initial_balance, n_periods) for _ in range(n_sims)]
+modified_balances = [simulate_modified_strategy(initial_balance, n_periods) for _ in range(n_sims)]
+
+# Create comparison plot
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+
+# Original strategy histogram
+ax1.hist(original_balances, bins=30, color='steelblue', alpha=0.7, edgecolor='black')
+ax1.axvline(initial_balance, color='red', linestyle='--', linewidth=2, 
+           label='Initial Balance ($1,000)')
+ax1.axvline(10000, color='green', linestyle=':', linewidth=2, 
+           label='$10,000 Threshold')
+ax1.set_title('Original Strategy\n(Bet Entire Account)', fontsize=12, fontweight='bold')
+ax1.set_xlabel('Final Balance ($)', fontsize=10)
+ax1.set_ylabel('Frequency', fontsize=10)
+ax1.legend()
+ax1.grid(True, alpha=0.3)
+ax1.set_xscale('log')
+ax1.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+
+# Modified strategy histogram
+ax2.hist(modified_balances, bins=30, color='orange', alpha=0.7, edgecolor='black')
+ax2.axvline(initial_balance, color='red', linestyle='--', linewidth=2, 
+           label='Initial Balance ($1,000)')
+ax2.axvline(10000, color='green', linestyle=':', linewidth=2, 
+           label='$10,000 Threshold')
+ax2.set_title('Modified Strategy\n(Bet 50% of Account)', fontsize=12, fontweight='bold')
+ax2.set_xlabel('Final Balance ($)', fontsize=10)
+ax2.set_ylabel('Frequency', fontsize=10)
+ax2.legend()
+ax2.grid(True, alpha=0.3)
+ax2.set_xscale('log')
+ax2.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+
+plt.suptitle('Strategy Comparison: Final Account Balances\n100 Simulations Each', 
+             fontsize=14, fontweight='bold')
+plt.tight_layout()
+plt.show()
+
+# Calculate and compare statistics
+orig_prob_above_1000 = np.mean(np.array(original_balances) > 1000)
+orig_prob_above_10000 = np.mean(np.array(original_balances) > 10000)
+mod_prob_above_1000 = np.mean(np.array(modified_balances) > 1000)
+mod_prob_above_10000 = np.mean(np.array(modified_balances) > 10000)
+
+print("=== STRATEGY COMPARISON RESULTS ===")
+print(f"Original Strategy:")
+print(f"  Probability > $1,000: {orig_prob_above_1000:.1%}")
+print(f"  Probability > $10,000: {orig_prob_above_10000:.1%}")
+print(f"  Mean final balance: ${np.mean(original_balances):,.2f}")
+print()
+print(f"Modified Strategy:")
+print(f"  Probability > $1,000: {mod_prob_above_1000:.1%}")
+print(f"  Probability > $10,000: {mod_prob_above_10000:.1%}")
+print(f"  Mean final balance: ${np.mean(modified_balances):,.2f}")
+```
 
 ## Key Insight: The Ergodicity Problem
 
