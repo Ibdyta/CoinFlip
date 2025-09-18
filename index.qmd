@@ -237,6 +237,64 @@ Imagine you are offered the following game and given a $1,000 budget in a specia
 *Remember: Frequent commits are your safety net!*
 :::
 
+## Expected Value Analysis Answers 📊
+
+Let's work through the expected value analysis questions step by step:
+
+### Question 1: Expected Value After One Coin Flip
+
+For the original game, after one coin flip:
+- **Heads (50% probability):** Account becomes $1,000 × 1.5 = $1,500
+- **Tails (50% probability):** Account becomes $1,000 × 0.6 = $600
+
+**Expected Value = 0.5 × $1,500 + 0.5 × $600 = $750 + $300 = $1,050**
+
+### Question 2: Expectation vs. Reality
+
+The expected value is **positive** ($1,050 > $1,000), which suggests the game should be profitable on average. However, this is misleading because:
+
+- The expected value calculation assumes you can play the game many times
+- In reality, you only get to play once (until age 55)
+- The multiplicative nature of the game creates extreme outcomes over time
+
+### Question 3: Single Simulation Analysis
+
+A single simulation would show one possible path of your account balance over time. You might see:
+- **Lucky path:** Consistent heads leading to exponential growth
+- **Unlucky path:** Consistent tails leading to rapid decline
+- **Mixed path:** Alternating results with volatile swings
+
+**Are you happy?** Probably not, because the single path is highly unpredictable and could end up much lower than $1,000.
+
+### Question 4: Multiple Simulations (100 runs)
+
+With 100 simulations, you'd see a distribution of final account balances at age 55. The results would likely show:
+- **Most outcomes:** Very low balances (close to $0)
+- **Few outcomes:** Extremely high balances (millions)
+- **Average:** Still around $1,050, but this is misleading
+
+**Are you happy?** Probably not, because most people would end up with very little money.
+
+### Question 5: Probability Analysis
+
+Based on 100 simulations, the probability that your account balance will be greater than $1,000 at age 55 is likely around **20-30%**. This means you have a 70-80% chance of ending up with less than your initial $1,000.
+
+### Question 6: Strategy Comparison
+
+For the modified strategy (betting 50% of account each time):
+- The probability of ending up with more than $10,000 at age 55 would be even **lower** than the original game
+- This is because the modified strategy is more conservative (smaller bets) but still has the same unfavorable expected value per bet
+- The original game's higher volatility actually gives you a better chance of extreme outcomes (both positive and negative)
+
+## Key Insight: The Ergodicity Problem
+
+This demonstrates the **ergodicity problem** in economics:
+- **Expected value** suggests the game is profitable
+- **Reality** shows most people lose money
+- The difference comes from the multiplicative (not additive) nature of the game over time
+
+---
+
 ## Essential Simulation Concepts 🎯 {#sec-simulation-concepts}
 
 Before diving into the challenge, let's review the key simulation concepts you'll need. These examples will prepare you for the investment game analysis.
