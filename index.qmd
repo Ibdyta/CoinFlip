@@ -6,8 +6,8 @@ format:
   pdf: default
 execute:
   echo: false
-  eval: false
-  include: false
+  eval: true
+  include: true
 ---
 
 # 🎲 Simulation Challenge - Monte Carlo Analysis
@@ -37,6 +37,7 @@ Imagine you are offered the following game and given a $1,000 budget in a specia
 ```{python}
 #| echo: false
 #| include: false
+#| eval: false
 #| python.reticulate: false
 import daft
 
@@ -65,6 +66,7 @@ investmentDAG.add_plate([-2, 0.5, 7.8, 1.0], label="t = 1, ..., N", shift=-0.1)
 #| label: fig-investment-dag
 #| fig-cap: Generative DAG model for the investment game showing how wealth evolves over time through coin flips
 #| echo: false
+#| eval: false
 #| python.reticulate: false
 investmentDAG.show()
 ```
@@ -733,6 +735,7 @@ Let's start with a basic coin flip simulation to understand the mechanics:
 ```{python}
 #| echo: false
 #| include: false
+#| eval: false
 #| python.reticulate: false
 import daft
 
@@ -755,6 +758,7 @@ simpleCoinDAG.add_edge("X", "W")
 #| label: fig-simple-coin-dag
 #| fig-cap: Generative DAG model for the simple coin flip game showing the relationship between coin flip outcome and winnings
 #| echo: false
+#| eval: false
 #| python.reticulate: false
 simpleCoinDAG.show()
 ```
@@ -799,6 +803,7 @@ sim_data
 #| fig-cap: Python simulation of coin flip game
 #| echo: false
 #| include: false
+#| eval: false
 #| python.reticulate: false
 
 import numpy as np
@@ -838,6 +843,7 @@ Now let's simulate how an account balance changes over multiple periods:
 ```{python}
 #| echo: false
 #| include: false
+#| eval: false
 #| python.reticulate: false
 import daft
 
@@ -866,6 +872,7 @@ timeSeriesDAG.add_plate([-5, 0.5, 9, 1.0], label="t = 1, ..., T", shift=-0.1)
 #| label: fig-timeseries-dag
 #| fig-cap: Generative DAG model for time-series account balance simulation showing how balance evolves sequentially over multiple periods
 #| echo: false
+#| eval: false
 #| python.reticulate: false
 timeSeriesDAG.show()
 ```
@@ -947,6 +954,7 @@ time_series_data
 #| fig-cap: Python time-series simulation of account balance
 #| echo: false
 #| include: false
+#| eval: false
 #| python.reticulate: false
 
 import numpy as np
@@ -1091,6 +1099,7 @@ summary_stats
 #| fig-cap: Python probability distribution of final balances
 #| echo: false
 #| include: false
+#| eval: false
 #| python.reticulate: false
 
 import numpy as np
