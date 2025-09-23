@@ -236,7 +236,7 @@ suppressPackageStartupMessages(library(ggplot2))
 set.seed(42)
 
 initial_balance <- 1000
-n_periods <- 35
+n_periods <- 55
 
 simulate_investment_path <- function(initial, periods) {
   balance <- initial
