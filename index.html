@@ -288,11 +288,67 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="question-3-single-simulation-analysis">Question 3: Single Simulation Analysis</h3>
 <p>A single simulation would show one possible path of your account balance over time. You might see: - <strong>Lucky path:</strong> Consistent heads leading to exponential growth - <strong>Unlucky path:</strong> Consistent tails leading to rapid decline - <strong>Mixed path:</strong> Alternating results with volatile swings</p>
 <p><strong>Are you happy?</strong> Probably not, because the single path is highly unpredictable and could end up much lower than $1,000.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/single-simulation-plot-r-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Single simulation showing account balance over time (R)</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Final balance: $9,772</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Return: 877.2%</code></pre>
+</div>
+</div>
 </section>
 <section id="question-4-multiple-simulations-100-runs" class="level3">
 <h3 class="anchored" data-anchor-id="question-4-multiple-simulations-100-runs">Question 4: Multiple Simulations (100 runs)</h3>
 <p>With 100 simulations, you’d see a distribution of final account balances at age 55. The results would likely show: - <strong>Most outcomes:</strong> Very low balances (close to $0) - <strong>Few outcomes:</strong> Extremely high balances (millions) - <strong>Average:</strong> Still around $1,050, but this is misleading</p>
 <p><strong>Are you happy?</strong> Probably not, because most people would end up with very little money.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/multiple-simulations-plot-r-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Distribution of final account balances from 100 simulations (R)</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean final balance: $3,001</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Median final balance: $100</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Probability above $1,000: 26.0%</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Probability above $10,000: 5.0%</code></pre>
+</div>
+</div>
 </section>
 <section id="question-5-probability-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="question-5-probability-analysis">Question 5: Probability Analysis</h3>
@@ -301,6 +357,42 @@ window.Quarto = {
 <section id="question-6-strategy-comparison" class="level3">
 <h3 class="anchored" data-anchor-id="question-6-strategy-comparison">Question 6: Strategy Comparison</h3>
 <p>For the modified strategy (betting 50% of account each time): - The probability of ending up with more than $10,000 at age 55 would be even <strong>lower</strong> than the original game - This is because the modified strategy is more conservative (smaller bets) but still has the same unfavorable expected value per bet - The original game’s higher volatility actually gives you a better chance of extreme outcomes (both positive and negative)</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'scales' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'scales'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    discard</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:readr':
+
+    col_factor</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/strategy-comparison-plot-r-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Comparison of original vs modified strategies (R)</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>=== STRATEGY COMPARISON RESULTS (R) ===</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Original Strategy: P(&gt; $1,000) = 24.0%, P(&gt; $10,000) = 6.0%</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Modified Strategy: P(&gt; $1,000) = 50.0%, P(&gt; $10,000) = 4.0%</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="key-insight-the-ergodicity-problem" class="level2">
